@@ -46,22 +46,22 @@
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/IconContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomContainer"
+        app:layout_constraintEnd_toStartOf="@id/buttonContainer"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="10dp"
         android:paddingVertical="30dp">
 
         <ImageView
             android:id="@+id/profileIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -91,7 +91,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/usernameText"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="0 $"
+            android:text="0.00 €"
             android:layout_marginTop="10dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

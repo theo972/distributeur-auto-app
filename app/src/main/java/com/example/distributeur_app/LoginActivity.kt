@@ -50,6 +50,9 @@ class LoginActivity : AppCompatActivity() {
             )
 
             queue.add(request)
+
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 }
