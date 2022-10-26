@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
                 val params = HashMap<String, String>()
                 params["name"] = binding.nameTextInput.text.toString()
                 params["password"] = binding.passwordTextInput.text.toString()
-                params["image"] = image_uri.toString()
+                params["picture"] = image_uri.toString()
                 val jsonObject = (params as Map<*, *>?)?.let { it1 -> JSONObject(it1) }
 
                 val request = JsonObjectRequest(
