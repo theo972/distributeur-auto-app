@@ -1,8 +1,8 @@
-package com.example.minstalesapp.Api
+package com.example.distributeur_app.Api
 
 object ApiHelper {
 
-    private const val baseUrl = "http:/localhost:8000/"
+    const val baseUrl = "http://praaly.fr:3024/"
     const val logUser = "${baseUrl}api/login"
     const val registerUser = "${baseUrl}api/register"
 }

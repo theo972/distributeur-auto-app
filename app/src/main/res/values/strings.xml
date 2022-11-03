@@ -2,4 +2,5 @@
     <string name="app_name">Distributeur_app</string>
     <string name="add">ADD</string>
     <string name="cancel">CANCEL</string>
+    <string name="no_account">Vous n\'avez pas de compte ?\n<u>cliquez ici</u></string>
 </resources>

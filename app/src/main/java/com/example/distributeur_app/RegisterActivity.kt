@@ -8,16 +8,19 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.distributeur_app.databinding.ActivityRegisterBinding
-import com.example.minstalesapp.Api.ApiHelper
+import com.example.distributeur_app.Api.ApiHelper
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.io.FileDescriptor
 import java.io.IOException
 
@@ -44,15 +47,18 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_SHORT).show()
             } else {
                 val params = HashMap<String, String>()
+
+                val stream = ByteArrayOutputStream()
+                uriToBitmap(image_uri!!)?.compress(Bitmap.CompressFormat.PNG, 90, stream)
+                val image = stream.toByteArray()
+                val encodedImage = Base64.encodeToString(image, Base64.DEFAULT)
+
                 params["name"] = binding.nameTextInput.text.toString()
                 params["password"] = binding.passwordTextInput.text.toString()
-                params["picture"] = image_uri.toString()
-                val jsonObject = (params as Map<*, *>?)?.let { it1 -> JSONObject(it1) }
+                params["image"] = encodedImage
 
-                val request = JsonObjectRequest(
-                    Request.Method.POST,
-                    url,
-                    jsonObject,
+                val jsonObject = (params as Map<*, *>?)?.let { it1 -> JSONObject(it1) }
+                val request = JsonObjectRequest(Request.Method.POST, url, jsonObject,
                     { response ->
                         Log.i("(SUCCESS)Post response", response.toString())
                         startActivity(Intent(this, LoginActivity::class.java))
@@ -62,9 +68,9 @@ class RegisterActivity : AppCompatActivity() {
                         binding.passwordTextInput.setText("")
                         binding.confirmPasswordTextInput.setText("")
                         Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                        Log.i("error register", response.toString())
                     }
                 )
-
                 queue.add(request)
             }
         }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@color/white">
 
     <Button
         android:id="@+id/registerButton"
@@ -22,17 +23,17 @@
         android:id="@+id/passwordTextInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/app_name"
+        android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/confirmPasswordTextInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintTop_toBottomOf="@id/nameTextInput"
+        android:textColor="@color/light_grey"
+        android:backgroundTint="@color/dark_grey"
+        android:textColorHint="@color/light_grey"/>
 
     <EditText
         android:id="@+id/nameTextInput"
@@ -41,28 +42,30 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/passwordTextInput"
+        android:hint="Username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927" />
+        app:layout_constraintTop_toBottomOf="@id/btnPicture"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/light_grey"
+        android:backgroundTint="@color/dark_grey"
+        android:textColorHint="@color/light_grey"/>
 
     <EditText
         android:id="@+id/confirmPasswordTextInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/app_name"
+        android:hint="Confirm password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintTop_toBottomOf="@id/passwordTextInput"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/light_grey"
+        android:backgroundTint="@color/dark_grey"
+        android:textColorHint="@color/light_grey"/>
 
     <ImageView
         android:id="@+id/btnPicture"

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView"
@@ -12,13 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
-        android:text="Distributeur Automatique par reconnaissance faciale !!"
+        android:text="Distributeur automatique par\nreconnaissance faciale !!"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28" />
+        app:layout_constraintVertical_bias="0.28"
+        android:textColor="@color/dark_grey"
+        android:backgroundTint="@color/dark_grey"/>
 
     <EditText
         android:id="@+id/NameLogin"
@@ -26,13 +29,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:minHeight="48dp"
-        android:text="Name"
+        android:hint="Username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintVertical_bias="0.168"
+        android:textColor="@color/light_grey"
+        android:backgroundTint="@color/dark_grey"
+        android:textColorHint="@color/light_grey"/>
 
     <EditText
         android:id="@+id/PasswordLogin"
@@ -41,31 +47,38 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:hint="Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NameLogin"
         app:layout_constraintVertical_bias="0.24"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:textColor="@color/light_grey"
+        android:backgroundTint="@color/dark_grey"
+        android:textColorHint="@color/light_grey"/>
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
         android:text="login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin"
+        android:layout_marginTop="30dp"/>
 
-    <Button
+    <TextView
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="register"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/no_account"
+        android:textAlignment="center"
+        android:textColor="@color/dark_grey"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

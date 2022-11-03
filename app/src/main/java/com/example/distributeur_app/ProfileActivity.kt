@@ -1,6 +1,5 @@
 package com.example.distributeur_app
 
-import android.R.attr.maxLength
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ContentValues
@@ -9,18 +8,22 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.text.InputType
+import android.util.Log
 import android.widget.EditText
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.distributeur_app.Api.ApiHelper
+import com.example.distributeur_app.Model.User
 import com.example.distributeur_app.databinding.ProfileBinding
+import com.squareup.picasso.Picasso
 import java.io.FileDescriptor
 import java.io.IOException
-
 
 class ProfileActivity: AppCompatActivity(){
     private lateinit var binding: ProfileBinding
@@ -31,6 +34,10 @@ class ProfileActivity: AppCompatActivity(){
         binding = ProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val user = intent.getSerializableExtra("User") as User
+        binding.usernameText.text = user.username
+        Picasso.get().load(ApiHelper.baseUrl + user.picture).into(binding.profileIcon)
+
         binding.logoutButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             this.startActivity(intent)
@@ -38,11 +45,14 @@ class ProfileActivity: AppCompatActivity(){
         }
 
         binding.walletButton.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
+            val builder = AlertDialog.Builder(this, R.style.MyAlertDialogTheme)
             builder.setTitle("Add money to your wallet")
             builder.setMessage("How much money do you want to add ?")
 
             val input = EditText(this)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                input.setTextColor(getColor(R.color.white))
+            }
             input.setInputType(InputType.TYPE_CLASS_NUMBER)
             input.setRawInputType(Configuration.KEYBOARD_12KEY)
             input.setFilters(arrayOf<InputFilter>(LengthFilter(3)))
@@ -50,7 +60,6 @@ class ProfileActivity: AppCompatActivity(){
             builder.setView(input)
 
             builder.setPositiveButton(R.string.add) { dialog, which ->
-                //TO DO : envoyer la valeur de la thune sur la bdd et mettre à jour le l'affiche de la thune
                 val reg = "^[0-9]*".toRegex()
                 val clearedCurrencyText = reg.find(binding.credit.text.toString())
                 if (clearedCurrencyText != null) {
